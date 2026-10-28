@@ -84,7 +84,7 @@ nav a:hover {
             rgba(0, 0, 0, 0.6),
             rgba(0, 0, 0, 0.6)
         ),
-        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2");
+        url("bg_image.jpg");
 
     background-size: cover;
     background-position: center;

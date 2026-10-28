@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+    <style>
+        /* Variables & Global Reset */
+        :root {
+            --bg: #050d24; /* Deep Navy Background */
+            --card: #1c2541; /* Subtle Dark Slate for Cards */
+            --text: #ffffff; 
+            --muted: #a5a1b8; 
+            --prim: #4ea8de; /* Electric Blue Accent */
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* Shared Flex Layouts */
+        header, .nav, .prof, .grid, .p-links, .socials { display: flex; }
+        section { padding: 6rem 2rem 2rem; max-width: 1100px; margin: 0 auto; text-align: center; }
+        
+        /* Navigation & Header */
+        header { position: fixed; top: 0; width: 100%; background: #0b132bcc; backdrop-filter: blur(8px); z-index: 10; border-bottom: 1px solid #22333b; }
+        .nav { width: 100%; max-width: 1100px; margin: 0 auto; justify-content: space-between; padding: 1.25rem 2rem; font-weight: 600; }
+        .nav ul { display: flex; list-style: none; gap: 2rem; }
+        .nav a:hover, .logo { color: var(--prim); }
+        .title { font-size: 2rem; margin-bottom: 2.5rem; }
+        .title::after { content: ''; display: block; width: 50px; height: 4px; background: var(--prim); margin: .5rem auto; border-radius: 2px; }
+
+        /* Profile Section */
+        .prof { align-items: center; gap: 4rem; text-align: left; padding-top: 3rem; }
+        .p-img { width: 280px; height: 320px; border-radius: 50%; border: 4px solid var(--prim); object-fit: cover; }
+        .prof h1 { font-size: 3rem; }
+        .sub { font-size: 1.5rem; color: var(--prim); margin: .5rem 0 1rem; }
+        .bio { color: var(--muted); margin-bottom: 2rem; }
+
+        /* Skills & Projects Responsive Grids */
+        .grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(var(--w, 320px), 1fr)); }
+        .skill-card { background: var(--card); padding: 1.5rem; border-radius: 8px; border: 1px solid #2a3439; font-weight: 600; }
+        .p-card { background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid #2a3439; display: flex; flex-direction: column; text-align: left; }
+        .p-img-thumb { width: 100%; height: 200px; object-fit: cover; }
+        .p-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .p-body p { color: var(--muted); margin: .5rem 0 1.5rem; flex-grow: 1; font-size: 0.95rem; }
+        .p-links { gap: 1rem; }
+
+        /* Action Buttons & Badges */
+        .btn { padding: .6rem 1.2rem; border-radius: 6px; font-weight: 600; font-size: .9rem; border: 1px solid transparent; text-center: center; }
+        .btn-p { background: var(--prim); color: #0b132b; }
+        .btn-s { border-color: #4a5568; }
+        .btn:hover { opacity: .9; background: #2c3e50; color: var(--text); }
+        .btn-p:hover { color: #0b132b; background: var(--prim); }
+        .socials { justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+        .s-link { padding: .7rem 1.5rem; background: var(--card); border: 1px solid #2a3439; border-radius: 30px; transition: .2s; }
+        .s-link:hover { border-color: var(--prim); color: var(--prim); transform: translateY(-2px); }
+        footer { text-align: center; padding: 3rem; color: var(--muted); font-size: .9rem; }
+
+        /* Responsive Breakpoint */
+        @media (max-width: 768px) {
+            .prof { flex-direction: column; text-align: center; gap: 2rem; }
+            .prof h1 { font-size: 2.2rem; }
+            .nav ul { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav">
+            <div class="logo">Shaik Adhil</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section id="about">
+        <div class="prof">
+            <div>
+                <!-- Real Profile Avatar Asset -->
+                <img src="profile.jpeg" alt="Shaik Adhil Profile" class="p-img">
+            </div>
+            <div>
+                <h1>Hi, I'm Shaik Adhil</h1>
+                <div class="sub">Full Stack Developer</div>
+                <p class="bio">
+                    I build clean, beautiful, and highly functional web applications. Passionate about user experience, efficient code architectures, and solving complex programmatic problems. Let's build something amazing together.
+                </p>
+                <a href="#contact" class="btn btn-p">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="title">My Skills</h2>
+        <div class="grid" style="--w: 140px;">
+            <div class="skill-card">HTML & CSS</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">React</div>
+            <div class="skill-card">Node.js</div>
+            <div class="skill-card">Python</div>
+            <div class="skill-card">SQL / NoSQL</div>
+            <div class="skill-card">Git & GitHub</div>
+            <div class="skill-card">Tailwind CSS</div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="title">Featured Projects</h2>
+        <div class="grid">
+            
+            <!-- Project 1 -->
+            <div class="p-card">
+                <!-- E-commerce Preview Asset -->
+                <img src="image1.png" alt="E-Commerce App Platform Preview" class="p-img-thumb">
+                <div class="p-body">
+                    <h3>E-Commerce Platform</h3>
+                    <p>A full-featured shopping app complete with user authentication, dynamic shopping carts, and integrated secure payment gateways.</p>
+                    <div class="p-links">
+                        <a href="#" target="_blank" class="btn btn-p">Live Demo</a>
+                        <a href="#" target="_blank" class="btn btn-s">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="p-card">
+                <!-- Analytics Dashboard Asset -->
+                <img src="image2.png" alt="Task Analytics Tool Preview" class="p-img-thumb">
+                <div class="p-body">
+                    <h3>Task Analytics Tool</h3>
+                    <p>A sleek, interactive dashboard enabling team workflows to keep track of tasks, deadlines, and real-time sprint productivity metrics.</p>
+                    <div class="p-links">
+                        <a href="#" target="_blank" class="btn btn-p">Live Demo</a>
+                        <a href="#" target="_blank" class="btn btn-s">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="p-card">
+                <!-- Mobile Weather App Asset -->
+                <img src="image3.png" alt="Weather Forecast Application Preview" class="p-img-thumb">
+                <div class="p-body">
+                    <h3>Weather Dashboard</h3>
+                    <p>A clean weather application fetching real-time third-party REST API information to provide location forecasts and climate maps.</p>
+                    <div class="p-links">
+                        <a href="#" target="_blank" class="btn btn-p">Live Demo</a>
+                        <a href="#" target="_blank" class="btn btn-s">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="max-width: 600px;">
+        <h2 class="title">Connect With Me</h2>
+        <p style="color: var(--muted);">I am currently available for new freelance project opportunities, full-time contracts, or just a quick tech chat! Drop me a message.</p>
+        <div class="socials">
+            <a href="mailto:alex@example.com" class="s-link">📩 Email Me</a>
+            <a href="https://github.com" target="_blank" class="s-link">🐙 GitHub</a>
+            <a href="https://linkedin.com" target="_blank" class="s-link">💼 LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" class="s-link">🐦 Twitter</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Shaik Adhil. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
