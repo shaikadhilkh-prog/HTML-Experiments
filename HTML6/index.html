@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Product Store</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background-color: #eef2f3;
+        }
+
+        header {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .filter-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        input, select {
+            padding: 10px;
+            margin: 8px;
+            width: 200px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 220px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #bbb;
+        }
+
+        .card h3 {
+            color: #263238;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .card button {
+            background: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #004d40;
+        }
+
+        #message {
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>ONLINE PRODUCT STORE</h1>
+    <p>Search and Explore Products</p>
+</header>
+
+<div class="filter-section">
+
+    <input type="text" id="searchBox"
+        placeholder="Enter product name">
+
+    <select id="categoryBox">
+        <option value="All">All Categories</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Sports">Sports</option>
+    </select>
+
+</div>
+
+<div class="container" id="productList"></div>
+
+<h3 id="message"></h3>
+
+<script>
+
+    let products = [
+        {name: "Smartphone", price: 15000, category: "Electronics"},
+        {name: "Laptop", price: 45000, category: "Electronics"},
+        {name: "Smart Watch", price: 3000, category: "Electronics"},
+        {name: "Shirt", price: 900, category: "Fashion"},
+        {name: "Shoes", price: 2000, category: "Fashion"},
+        {name: "Football", price: 700, category: "Sports"},
+        {name: "Cricket Bat", price: 1500, category: "Sports"}
+    ];
+
+    let productList = document.getElementById("productList");
+
+    function displayProducts(list) {
+
+        productList.innerHTML = "";
+
+        document.getElementById("message").innerHTML = "";
+
+        if (list.length == 0) {
+            document.getElementById("message").innerHTML =
+                "No Products Available";
+            return;
+        }
+
+        list.forEach(function(product) {
+
+            let div = document.createElement("div");
+
+            div.className = "card";
+
+            div.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>Price: ₹${product.price}</p>
+                <p>Category: ${product.category}</p>
+                <button>View Product</button>
+            `;
+
+            productList.appendChild(div);
+
+        });
+    }
+
+    function searchProducts() {
+
+        let search = document.getElementById("searchBox")
+            .value.toLowerCase();
+
+        let category = document.getElementById("categoryBox").value;
+
+        let result = products.filter(function(product) {
+
+            return product.name.toLowerCase().includes(search) &&
+            (category == "All" || product.category == category);
+
+        });
+
+        displayProducts(result);
+    }
+
+    document.getElementById("searchBox")
+        .addEventListener("input", searchProducts);
+
+    document.getElementById("categoryBox")
+        .addEventListener("change", searchProducts);
+
+    displayProducts(products);
+
+</script>
+
+</body>
+</html>
